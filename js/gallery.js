@@ -83,8 +83,11 @@ function imagesMarkup() {
     .join("\n\n");
   gallery.innerHTML = result;
 }
+
 imagesMarkup();
+
 gallery.addEventListener("click", onImgClick);
+
 function onImgClick(event) {
   event.preventDefault();
 
@@ -102,6 +105,7 @@ function onImgClick(event) {
       },
     }
   );
+
   instance.show(() => document.addEventListener("keydown", onEscKeydown));
 
   function onEscKeydown(event) {
