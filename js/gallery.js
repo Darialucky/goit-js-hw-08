@@ -91,15 +91,17 @@ gallery.addEventListener("click", onImgClick);
 function onImgClick(event) {
   event.preventDefault();
 
-  if (event.target === event.currentTarget) return;
+  const imgElement = event.target.closest(".gallery-image");
+
+  if (!imgElement) return;
 
   const instance = basicLightbox.create(
     `<div class="modal">
-          <img src="${event.target.getAttribute(
-            "data-source"
-          )}" width="800" height="600">
-      </div> 
-  `,
+      <img src="${imgElement.getAttribute(
+        "data-source"
+      )}" width="800" height="600">
+    </div> 
+    `,
     {
       onClose: () => {
         document.removeEventListener("keydown", onEscKeydown);
