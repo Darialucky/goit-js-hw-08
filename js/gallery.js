@@ -94,10 +94,11 @@ function onImgClick(event) {
   if (event.target === event.currentTarget) return;
 
   const instance = basicLightbox.create(
-    `
-    <img src="${event.target.getAttribute(
-      "data-source"
-    )}" width="800" height="600">
+    `<div class="modal">
+          <img src="${event.target.getAttribute(
+            "data-source"
+          )}" width="800" height="600">
+      </div> 
   `,
     {
       onClose: () => {
