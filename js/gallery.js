@@ -97,19 +97,20 @@ function onImgClick(event) {
 
   const instance = basicLightbox.create(
     `<div class="modal">
-      <img src="${imgElement.getAttribute(
-        "data-source"
-      )}" width="800" height="600">
-    </div> 
-    `,
+    <img src="${imgElement.getAttribute(
+      "data-source"
+    )}" width="800" height="600">
+  </div> 
+  `,
     {
+      onShow: () => {
+        document.addEventListener("keydown", onEscKeydown);
+      },
       onClose: () => {
         document.removeEventListener("keydown", onEscKeydown);
       },
     }
   );
-
-  instance.show(() => document.addEventListener("keydown", onEscKeydown));
 
   function onEscKeydown(event) {
     if (event.code === "Escape") instance.close();
