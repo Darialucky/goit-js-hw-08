@@ -103,13 +103,16 @@ function onImgClick(event) {
     </div> 
     `,
     {
+      onShow: () => {
+        document.addEventListener("keydown", onEscKeydown);
+      },
       onClose: () => {
         document.removeEventListener("keydown", onEscKeydown);
       },
     }
   );
 
-  instance.show(() => document.addEventListener("keydown", onEscKeydown));
+  instance.show();
 
   function onEscKeydown(event) {
     if (event.code === "Escape") instance.close();
